@@ -37,7 +37,7 @@ const App = () => {
 		try {
 			const endpoint = query
 				? `${API_BASE_URL}/search/tv?query=${encodeURIComponent(query)}`
-				: `${API_BASE_URL}/discover/tv?sort_by=popularity.desc`;
+				: `${API_BASE_URL}/discover/tv`;
 
 			const response = await fetch(endpoint, API_OPTIONS);
 
@@ -54,7 +54,6 @@ const App = () => {
 			}
 
 			setTvSeries(data.results || []);
-			console.log(data.results);
 
 			if (query && data.results.length > 0) {
 				await updateSearchCount(query, data.results[0]);
