@@ -27,6 +27,7 @@ const App = () => {
 	const [isTrendingLoading, setIsTrendingLoading] = useState(false);
 
 	const [trendingMovies, setTrendingMovies] = useState([]);
+	const [movieDetails, setMovieDetails] = useState({});
 
 	useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
@@ -77,6 +78,24 @@ const App = () => {
 			console.error(`Error fetching trending movies: ${error}`);
 		} finally {
 			setIsTrendingLoading(false);
+		}
+	};
+
+	const fetchMovieDetails = async (movieId) => {
+		setErrorMessage("");
+		try {
+			const response = await fetch(
+				`${API_BASE_URL}/tv/${movieId}`,
+				API_OPTIONS
+			);
+			if (!response.ok) {
+				throw new Error("Failed to fetch movie details");
+			}
+			const data = await response.json();
+
+			setMovieDetails(data);
+		} catch (error) {
+			console.error(`Error fetching movie details: ${error}`);
 		}
 	};
 
@@ -138,7 +157,12 @@ const App = () => {
 					) : (
 						<ul>
 							{tvSeries.map((movie) => (
-								<MovieCard key={movie.id} movie={movie} />
+								<MovieCard
+									key={movie.id}
+									movie={movie}
+									fetchMovieDetails={fetchMovieDetails}
+									movieDetails={movieDetails}
+								/>
 							))}
 						</ul>
 					)}

@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import MovieModal from "./MovieModal";
 
-const MovieCard = ({
-	movie: { name, vote_average, poster_path, release_date, original_language },
-}) => {
+const MovieCard = ({ movie, fetchMovieDetails, movieDetails }) => {
+	const {
+		id,
+		name,
+		vote_average,
+		poster_path,
+		first_air_date,
+		original_language,
+	} = movie;
+	const [openModal, setOpenModal] = useState(false);
+
+	const handleMovieClick = (id) => {
+		setOpenModal(true);
+		fetchMovieDetails(id);
+	};
+
 	return (
 		<div className="movie-card">
 			<img
@@ -15,7 +29,12 @@ const MovieCard = ({
 			/>
 
 			<div className="mt-4">
-				<h3>{name}</h3>
+				<h3
+					onClick={() => handleMovieClick(id)}
+					className="hover:underline cursor-pointer"
+				>
+					{name}
+				</h3>
 
 				<div className="content">
 					<div className="rating">
@@ -28,10 +47,16 @@ const MovieCard = ({
 
 					<span>•</span>
 					<p className="year">
-						{release_date ? release_date.split("-")[0] : "N/A"}
+						{first_air_date ? first_air_date.split("-")[0] : "N/A"}
 					</p>
 				</div>
 			</div>
+			{openModal && (
+				<MovieModal
+					movieDetails={movieDetails}
+					setOpenModal={() => setOpenModal(false)}
+				/>
+			)}
 		</div>
 	);
 };
