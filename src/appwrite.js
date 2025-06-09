@@ -10,9 +10,7 @@ if (!endpoint) {
 	console.error("❌ Missing VITE_APPWRITE_ENDPOINT in environment variables");
 }
 
-const client = new Client()
-	.setEndpoint("https://fra.cloud.appwrite.io/v1")
-	.setProject(PROJECT_ID);
+const client = new Client().setEndpoint(endpoint).setProject(PROJECT_ID);
 
 const database = new Databases(client);
 
