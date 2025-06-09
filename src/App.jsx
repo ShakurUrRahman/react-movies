@@ -10,7 +10,7 @@ const App = () => {
 				<header>
 					<img src="./hero.png" alt="Herp Banner" />
 					<h1>
-						Find <span className="text-gradient">Movies</span>{" "}
+						Find <span className="text-gradient">TV Series</span>{" "}
 						You'll Enjoy Without the Hussle
 					</h1>
 				</header>
