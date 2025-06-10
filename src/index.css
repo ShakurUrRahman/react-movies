@@ -142,7 +142,7 @@
 	}
 
 	.movie-modal {
-		@apply rounded-[14px] bg-[#0F0D23] mx-[80px] my-12;
+		@apply rounded-[14px] bg-[#0F0D23] lg:mx-[80px] lg:my-12;
 		box-shadow: 0px 0px 100px 0px rgba(171, 139, 255, 0.3),
 			inset 0px 12px 32px 0px rgba(206, 206, 251, 0.02);
 	}

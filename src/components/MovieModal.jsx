@@ -25,8 +25,8 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 
 	return (
 		<div>
-			<div className="fixed inset-0 w-full overflow-y-auto bg-slate-800/50 backdrop-blur-sm z-50 py-20 px-28">
-				<div className="relative mx-auto bg-slate-900 p-4 border border-slate-600/50 rounded-lg shadow-lg shadow-slate-400/10">
+			<div className="fixed inset-0 w-full overflow-y-auto bg-slate-800/50 backdrop-blur-sm z-50 sm:py-6 sm:px-3 md:py-12 md:px-16 lg:py-20 lg:px-28">
+				<div className="relative mx-auto bg-slate-900 lg:p-4 border border-slate-600/50 rounded-lg shadow-lg shadow-slate-400/10">
 					{tvSeriesDetailsLoading ? (
 						<div className="flex justify-center">
 							{" "}
@@ -41,13 +41,13 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 								X
 							</button>
 							<div className="p-12">
-								<div className="flex justify-between items-center mb-[30px]">
+								<div className="flex flex-col xl:flex-row justify-between items-center mb-[30px]">
 									<div>
-										<h1 className="text-4xl font-bold">
+										<h1 className="text-4xl font-bold leading-12 xl:leading-12">
 											{name}
 										</h1>
 
-										<div className="flex gap-2 text-[#A8B5DB]">
+										<div className="flex gap-2 text-[#A8B5DB] mb-3 xl:mb-0">
 											<p>
 												{first_air_date
 													? first_air_date.split(
@@ -110,7 +110,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 									</div>
 								</div>
 								<div className="grid grid-cols-6 gap-6 mb-6">
-									<div className="col-span-2">
+									<div className="col-span-2 hidden xl:block">
 										<img
 											className="w-full rounded-lg h-[441px]"
 											src={
@@ -121,9 +121,9 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 											alt=""
 										/>
 									</div>
-									<div className="col-span-4">
+									<div className="col-span-6 xl:col-span-4">
 										<img
-											className="w-full rounded-lg h-[441px]"
+											className="xl:w-full rounded-lg xl:h-[441px] "
 											src={
 												poster_path
 													? `https://image.tmdb.org/t/p/w500/${backdrop_path}`
@@ -133,11 +133,11 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 										/>
 									</div>
 								</div>
-								<div className="flex justify-between">
+								<div className="flex justify-between text-sm lg:text-lg">
 									<table className="w-full text-sm text-[#A8B5DB]">
 										<tbody>
 											<tr>
-												<td className="py-2 pr-4 text-[#A8B5DB] text-lg whitespace-nowrap">
+												<td className="py-2 pr-4 text-[#A8B5DB] whitespace-nowrap">
 													Genres
 												</td>
 												<td className="py-2">
@@ -163,7 +163,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 												</td>
 											</tr>
 											<tr className="align-top">
-												<td className="py-2 pr-4 text-[#A8B5DB] text-lg whitespace-nowrap font-normal">
+												<td className="py-2 pr-4 text-[#A8B5DB] whitespace-nowrap font-normal">
 													Overview
 												</td>
 												<td className="py-2 text-white leading-[28px] font-normal">
@@ -171,7 +171,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 												</td>
 											</tr>
 											<tr>
-												<td className="text-[#A8B5DB] py-2 pr-4 text-lg whitespace-nowrap font-normal">
+												<td className="text-[#A8B5DB] py-2 pr-4 whitespace-nowrap font-normal">
 													Release Date
 												</td>
 												<td className="py-2 text-[#D6C7FF] font-semibold">
@@ -189,7 +189,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 												</td>
 											</tr>
 											<tr>
-												<td className="text-[#A8B5DB] py-2 pr-4 text-lg whitespace-nowrap font-normal">
+												<td className="text-[#A8B5DB] py-2 pr-4 whitespace-nowrap font-normal">
 													Countries
 												</td>
 												{production_countries &&
@@ -205,9 +205,8 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 														</td>
 													)}
 											</tr>
-
 											<tr>
-												<td className="py-2 pr-4 text-[#A8B5DB] text-lg whitespace-nowrap">
+												<td className="py-2 pr-4 text-[#A8B5DB] whitespace-nowrap">
 													Status
 												</td>
 												<td className="py-2 text-[#D6C7FF] font-semibold">
@@ -215,7 +214,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 												</td>
 											</tr>
 											<tr>
-												<td className="py-2 pr-4 text-[#A8B5DB] text-lg whitespace-nowrap">
+												<td className="py-2 pr-4 text-[#A8B5DB] whitespace-nowrap">
 													Language
 												</td>
 												<td className="py-2 text-[#D6C7FF] font-semibold">
@@ -231,7 +230,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 												</td>
 											</tr>
 											<tr>
-												<td className="py-2 pr-4 text-[#A8B5DB] text-lg whitespace-nowrap">
+												<td className="py-2 pr-4 text-[#A8B5DB] whitespace-nowrap">
 													No. of Episodes
 												</td>
 												<td className="py-2 text-[#D6C7FF] font-semibold">
@@ -239,7 +238,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 												</td>
 											</tr>
 											<tr>
-												<td className="py-2 pr-4 text-[#A8B5DB] text-lg whitespace-nowrap">
+												<td className="py-2 pr-4 text-[#A8B5DB] whitespace-nowrap">
 													No. of Seasons
 												</td>
 												<td className="py-2 text-[#D6C7FF] font-semibold">
@@ -247,7 +246,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 												</td>
 											</tr>
 											<tr>
-												<td className="py-2 pr-4 text-[#A8B5DB] text-lg whitespace-nowrap">
+												<td className="py-2 pr-4 text-[#A8B5DB] whitespace-nowrap">
 													Type
 												</td>
 												<td className="py-2 text-[#D6C7FF] font-semibold">
@@ -255,7 +254,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 												</td>
 											</tr>
 											<tr>
-												<td className="py-2 pr-4 text-[#A8B5DB] text-lg whitespace-nowrap">
+												<td className="py-2 pr-4 text-[#A8B5DB] whitespace-nowrap">
 													Production <br /> Companies
 												</td>
 												{production_companies &&
@@ -273,7 +272,7 @@ const MovieModal = ({ movieDetails, setOpenModal, tvSeriesDetailsLoading }) => {
 											</tr>
 										</tbody>
 									</table>
-									<div className="">
+									<div className="hidden xl:block">
 										<button
 											onClick={() =>
 												(window.location.href = "/")
