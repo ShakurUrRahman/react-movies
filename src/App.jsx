@@ -25,6 +25,7 @@ const App = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [isTrendingLoading, setIsTrendingLoading] = useState(false);
+	const [tvSeriesDetailsLoading, setTvSeriesDetailsLoading] = useState(false);
 
 	const [trendingMovies, setTrendingMovies] = useState([]);
 	const [movieDetails, setMovieDetails] = useState({});
@@ -82,6 +83,7 @@ const App = () => {
 	};
 
 	const fetchMovieDetails = async (movieId) => {
+		setTvSeriesDetailsLoading(true);
 		setErrorMessage("");
 		try {
 			const response = await fetch(
@@ -96,6 +98,8 @@ const App = () => {
 			setMovieDetails(data);
 		} catch (error) {
 			console.error(`Error fetching movie details: ${error}`);
+		} finally {
+			setTvSeriesDetailsLoading(false);
 		}
 	};
 
@@ -162,6 +166,12 @@ const App = () => {
 									movie={movie}
 									fetchMovieDetails={fetchMovieDetails}
 									movieDetails={movieDetails}
+									tvSeriesDetailsLoading={
+										tvSeriesDetailsLoading
+									}
+									setTvSeriesDetailsLoading={
+										setTvSeriesDetailsLoading
+									}
 								/>
 							))}
 						</ul>

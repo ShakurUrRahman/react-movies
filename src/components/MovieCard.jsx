@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import MovieModal from "./MovieModal";
 
-const MovieCard = ({ movie, fetchMovieDetails, movieDetails }) => {
+const MovieCard = ({
+	movie,
+	fetchMovieDetails,
+	movieDetails,
+	tvSeriesDetailsLoading,
+	setTvSeriesDetailsLoading,
+}) => {
 	const {
 		id,
 		name,
@@ -55,6 +61,8 @@ const MovieCard = ({ movie, fetchMovieDetails, movieDetails }) => {
 				<MovieModal
 					movieDetails={movieDetails}
 					setOpenModal={() => setOpenModal(false)}
+					tvSeriesDetailsLoading={tvSeriesDetailsLoading}
+					setTvSeriesDetailsLoading={setTvSeriesDetailsLoading}
 				/>
 			)}
 		</div>
