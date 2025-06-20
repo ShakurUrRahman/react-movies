@@ -129,7 +129,7 @@ const App = () => {
 
 				{trendingMovies.length > 0 && (
 					<section className="trending">
-						<h2>Trending Movies</h2>
+						<h2>Trending TV Series</h2>
 
 						<ul>
 							{isTrendingLoading ? (
@@ -152,7 +152,7 @@ const App = () => {
 				)}
 
 				<section className="all-movies">
-					<h2>All Movies</h2>
+					<h2>All TV Series</h2>
 
 					{isLoading ? (
 						<Spinner />
